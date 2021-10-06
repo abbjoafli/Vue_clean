@@ -19,7 +19,7 @@
      <v-flex xs12 sm6 md3>
           <v-text-field
             label="Viktigt meddelande"
-            box
+            
             v-model="MSG"
           ></v-text-field>
         </v-flex>

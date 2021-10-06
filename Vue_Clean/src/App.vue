@@ -1,45 +1,54 @@
 <template>
   <v-app>
-    <v-toolbar app>
+
+
+
+>
+ <v-app-bar color="deep-purple" dark app   src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"  >
+ 
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      
       <v-toolbar-title class="headline text-uppercase">
-        <span>Movies</span>
-        <span class="font-weight-light"> Super database</span>
+        <span>Starter</span>
+        <span class="font-weight-light">base</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     <v-btn
-        flat
-        target="_blank"
-        @click="addnew= !addnew"
+    v-for="route in routes"
+    :key="route.name"
+    :disabled="page==route.path"
+       @click="changePage(route.path);$router.push(route.path)"
       >
-      
-        <span  v-if="addnew!==true" class="mr-2">Lägg till film</span>
-        <span  v-else class="mr-2">Kolla filmer</span>
-      </v-btn>
-    </v-toolbar>
+      {{route.name}}
+          </v-btn>
+ </v-app-bar>
 
     <v-content>
-    <div v-if="addnew!==true">
-     
-    <ExampleComp MSG="apa apa apa" />
-      </div>
-          <div v-else>
-     
-      </div>
+     <router-view />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import ExampleComp from './components/ExampleComp'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    ExampleComp
   },
+    computed: {
+    ...mapGetters('example',['page']),
+  },
+   methods: {
+
+    ...mapActions('example', ['changePage']),
+
+   }
+   ,
   data () {
     return {
       addnew:false,
+      routes: [{name: "Home", path:"/home"} ,{name: "About", path:"/about"}]
       //
     }
   }

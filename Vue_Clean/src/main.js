@@ -1,13 +1,20 @@
 import Vue from 'vue'
-import './plugins/vuetify'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+import router from './router'
 import App from './App.vue'
 
 
-import store from './store/store'
 
+import axios from 'axios'
+Vue.prototype.$axios = axios
+
+import store from './store/'
 
 new Vue({
-  render: h => h(App),
-  
-  store,
-}).$mount('#app')
+      el: '#app',
+      router,
+      vuetify,
+      store,
+      components: { App },
+      render: h => h(App)
+    }).$mount('#app')
