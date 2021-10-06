@@ -1,4 +1,12 @@
-# aws_vue
+# Vue_clean
+
+Här finns en färdig Vue grund med
+1. axios
+2. routing mellan sidor
+3. vuex (store)
+4. vuetify
+
+
 
 ## Project setup
 ```
